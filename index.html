@@ -1,0 +1,58 @@
+<!Doctype Html>
+<html>
+
+<head>
+<!-- This is interpreted by the browser so it knows what to include in this file. It is not displayed to the user -->
+<!-- JS, CSS files -->
+<style>
+  h1{
+    color:red;
+    text-decoration:underline
+  }
+  /* Select a class using . */
+  .location{
+    color:blue
+  }
+  /* Select a id using # */
+  #sampleText{
+    color:#fff
+  }
+</style>
+<script>
+
+function randomFunc(){
+
+	const sampleText = document.getElementById('sampleText').innerHTML
+  /* sampleText = 'Dog President' */
+  alert(sampleText)
+	
+}
+
+
+function findText(value){
+ alert(value === 'b')
+ return value == 'b' //true if equivalent and false if not
+}
+
+
+</script>
+</head>
+<body>
+<!-- This is where we put the information to display to the user -->
+<h1>
+Barcode
+</h1>
+<h2 class="location">
+Venue: UWI campus
+</h2>
+<button onClick="findText('c')">
+Take me to your leader
+</button>
+<p id="sampleText">
+My past girlfriend never returned my calls
+</p>
+<div id="sampleText">
+My first div
+</div>
+</body>
+</html>
