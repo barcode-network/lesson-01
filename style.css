@@ -1,0 +1,12 @@
+h1{
+    color:red;
+    text-decoration:underline
+  }
+  /* Select a class using . */
+  .location{
+    color:blue
+  }
+  /* Select a id using # */
+  #sampleText{
+    color:#fff
+  }
