@@ -17,6 +17,13 @@
   #sampleText{
     color:#fff
   }
+
+  button{
+    background-color: blue;
+    border: 1px solid white;
+    padding:30px;
+    color:white;
+  }
 </style>
 <script>
 
@@ -30,29 +37,90 @@ function randomFunc(){
 
 
 function findText(value){
+//triple equal compares both sides to ensure they are of the same value AND of the same type
  alert(value === 'b')
  return value == 'b' //true if equivalent and false if not
 }
 
+function appendToList(){
+
+  var user_input = document.getElementById('user_input')
+
+  // alert(user_input.value)
+
+  var listNode = document.createElement('li')
+  listNode.innerHTML = user_input.value
+  user_input.value = ''
+
+  var list_items = document.getElementById('user_list')
+  list_items.appendChild(listNode)
+
+}
+
+function updateList(){
+
+  var list_items = document.getElementById('user_list')
+  var indiv_list = list_items.childNodes
+  console.log(indiv_list)
+  // alert(indiv_list)
+
+  for(var x = 0; x < indiv_list.length; x++){
+    if(x == 1 || x == 3 || x == 5){
+      var editButtonNode = document.createElement('button');
+    editButtonNode.innerHTML = 'Edit'
+    //Add a click event handler
+    editButtonNode.addEventListener('click', function(e){
+        editItem(indiv_list[x])
+        e.stopPropagation()
+    })
+    indiv_list[x].appendChild(editButtonNode);
+    }
+    
+
+  }
+
+  var editItem = function(node){
+
+    var result = prompt("Please enter your name", node.innerHTML);
+    if(result){
+        node.innerHTML = result
+    }
+
+  }
+
+  // var editButtonNode = document.createElement('button');
+  //   editButtonNode.innerHTML = 'Edit'
+  //   //Add a click event handler
+  //   editButtonNode.addEventListener('click', function(e){
+  //       editItem(textNode)
+  //       e.stopPropagation()
+  //   })
+  //   // editButtonNode.addEventListener('click', editItem(textNode))
+
+  //   itemNode.appendChild(editButtonNode);
+
+}
+// setTimeout(updateList(),3000)
+window.onload = updateList
+
 
 </script>
 </head>
-<body>
-<!-- This is where we put the information to display to the user -->
-<h1>
-Barcode
-</h1>
-<h2 class="location">
-Venue: UWI campus
-</h2>
-<button onClick="findText('c')">
-Take me to your leader
-</button>
-<p id="sampleText">
-My past girlfriend never returned my calls
-</p>
-<div id="sampleText">
-My first div
-</div>
+<body onLoad = updateList()>
+  <!-- This is where we put the information to display to the user -->
+ 
+  
+  <ol id='user_list'>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ol>
+
+  <form>
+    <input type='text' id='user_input' value='' />
+    <!-- <input type='submit' value='Submit' /> -->
+    <button type='button' onClick='appendToList()'>Submit</button>
+  </form>
+
 </body>
 </html>
